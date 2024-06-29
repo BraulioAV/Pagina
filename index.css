@@ -1,0 +1,344 @@
+body {
+    background: linear-gradient(135deg, #f7d794, #ff4e50, #ffffff);
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.envelope-wrapper {
+    height: 380px;
+}
+
+#envelope {
+    position: relative;
+    height: 380px;
+    width: 480px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 50%;
+    background-color: #eceaea;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+#envelope:hover {
+    cursor: pointer;
+}
+
+.front {
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: 3;
+}
+
+.flap {
+    border-top: 230px solid #948e8e;
+    border-left: 240px solid transparent;
+    border-right: 240px solid transparent;
+    border-bottom: 82px solid transparent;
+    transform-origin: top;
+}
+
+.pocket {
+    border-left: 240px solid white;
+    border-right: 240px solid #d3cecf;
+    border-bottom: 190px solid white;
+    border-top: 190px solid transparent;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.letter-image {
+    position: absolute;
+    width: 100%; /* Ajusta el ancho al 100% del contenedor */
+    height: auto; /* Mantén la proporción de aspecto */ 
+    object-fit: cover; /* Ajusta la imagen dentro de su contenedor */
+    border-radius: 0px; /* Añade bordes redondeados si es necesario */
+    box-shadow: 0 2px 26px rgba(0, 0, 0, .12); /* Opcional: añade sombra */
+}
+
+.letter-image:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.words {
+    position: absolute;
+    left: 10%;
+    width: 80%;
+    height: 14%;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+.line1 {
+    top: 15%;
+}
+.line2 {
+    top: 30%;
+}
+.line3 {
+    top: 50%;
+    text-align: center;
+}
+.line4 {
+    top: 65%;
+    text-align: center;
+}
+
+.open .flap {
+    transform: rotatex(180deg);
+    transition: transform 0.4s ease, z-index 0.6s;
+    z-index: 1;
+}
+
+.close .flap {
+    transform: rotatex(0deg);
+    transition: transform 0.4s 0.6s ease, z-index 1s;
+    z-index: 5;
+}
+
+.open .letter-image {
+    transform: translatey(-150px);
+    transition: transform 0.4s 0.6s ease, z-index 40s;
+    z-index: 10;
+}
+
+.zoom .letter-image {
+    transform: translateY(-100px) scale(1.5); /* Ajusta la posición y el zoom según sea necesario */
+    transition: transform 2s ease; /* Ajusta la duración según sea necesario */
+    z-index: 10;
+}
+
+.close .letter-image {
+    transform: translatey(0deg) scale(1);
+    transition: transform 0.4s ease, z-index 1s;
+    z-index: 1;
+}
+
+.hearts {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.heart {
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+}
+
+.heart:before, .heart:after {
+    position: absolute;
+    content: "";
+    background: #d00000;
+    width: 50px;
+    height: 80px;
+    left: 50px;
+    top: 0;
+    border-radius: 50px 50px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.heart:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+.close .heart {
+    opacity: 0;
+    animation: none;
+}
+
+.a1 {
+    left: 20%;
+    transform: scale(0.6);
+    opacity: 1;
+    animation: slideUp 2s linear 1, sideSway 2s  ease-in-out 4 alternate;
+    animation-fill-mode: forwards;
+    animation-delay: 0.7s;
+}
+.a2 {
+    left: 55%;
+    transform: scale(1);
+    opacity: 1;
+    animation: slideUp 3s linear 1, sideSway 4s  ease-in-out 2 alternate;
+    animation-fill-mode: forwards;
+    animation-delay: 0.7s;
+}
+.a3 {
+    left: 10%;
+    transform: scale(0.8);
+    opacity: 1;
+    animation: slideUp 3s linear 1, sideSway 2s  ease-in-out 6 alternate;
+    animation-fill-mode: forwards;
+    animation-delay: 0.7s;
+}
+
+@keyframes slideUp {
+    0% {
+       top: 0;
+    }
+    100% {
+        top: -600px;
+    }
+}
+
+@keyframes sideSway {
+    0% {
+        margin-left: 0px;
+    }
+    100% {
+        margin-left: 50px;
+    }
+}
+
+.reset {
+    text-align: center;
+    margin-top: 150px;
+}
+
+.reset button {
+    font-weight: 800;
+    font-style: normal;
+    transition: all 0.1s linear;
+    background-color: transparent;
+    border: solid 2px #070505;
+    border-radius: 4px;
+    color: #000000;
+    display: inline-block;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 20px;
+    margin-top: 100px;
+    padding: 10px;
+    line-height: 2em;
+    text-decoration: none;
+    min-width: 150px;
+    outline: none;
+}
+
+.reset button:hover {
+    background-color: #fdfdfd;
+    cursor: pointer;
+    color: rgb(5, 4, 4);
+}
+
+.linea1 {
+    position: absolute; /* Asegura que la imagen está posicionada relativamente a su contenedor */
+    width: 70%;
+    left: 16%;
+    height: 350px; /* Ajusta la altura según sea necesario */
+    background-image: url('linea.png');
+    background-size: cover; /* Hace que la imagen cubra todo el contenedor */
+    background-position: center; /* Centra la imagen en el contenedor */
+    opacity: 1;
+}
+
+.valentine {
+    position: relative; /* Asegura que el texto está posicionado relativamente a su contenedor */
+    z-index: 2; /* Asegura que el texto está delante de la imagen */
+    text-align: center;
+    font-family: 'Brush Script MT', Arial, Helvetica, sans-serif;
+    color: rgb(20, 20, 20);
+    font-size: 40px;
+    margin: 150px;
+}
+
+
+
+/* Estilo para la imagen */
+.foto1 {
+    position: relative;
+    top: 5%; /* Ajusta la posición superior según sea necesario */
+    left: 0%; /* Ajusta la posición izquierda según sea necesario */
+    width: 30%; /* Ajusta el ancho según sea necesario */
+    height: 50%; /* Ajusta la altura según sea necesario */
+    object-fit: cover; /* Ajusta la imagen dentro de su contenedor */
+    box-shadow: 0 2px 26px rgba(0, 0, 0, .12); /* Opcional: añade sombra */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    display: block; /* Asegura que el margen automático funcione */
+    border-radius: 30px;
+}
+
+.post2 {
+    display: flex; /* Activa el modo Flexbox */
+    justify-content: center; /* Centra las imágenes horizontalmente */
+    align-items: center; /* Centra las imágenes verticalmente */
+    gap: 20px; /* Espacio entre las imágenes */
+    margin-top: 50px;
+}
+
+.foto2{
+    position: relative;
+    top: 7%; /* Ajusta la posición superior según sea necesario */
+    left: 1.5%; /* Ajusta la posición izquierda según sea necesario */
+    width: 24%; /* Ajusta el ancho según sea necesario */
+    object-fit: cover; /* Ajusta la imagen dentro de su contenedor */
+    box-shadow: 0 2px 26px rgba(0, 0, 0, .12); /* Opcional: añade sombra */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    border-radius: 30px;
+}
+
+.foto3 {
+    position: relative;
+    top: 80px; /* Ajusta la posición superior según sea necesario */
+    left: 1.5%; /* Ajusta la posición izquierda según sea necesario */
+    width: 24%; /* Ajusta el ancho según sea necesario */
+    object-fit: cover; /* Ajusta la imagen dentro de su contenedor */
+    box-shadow: 0 2px 26px rgba(0, 0, 0, .12); /* Opcional: añade sombra */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    border-radius: 30px;
+}
+.foto4 {
+    position: relative;
+    top: -30px; /* Ajusta la posición superior según sea necesario */
+    left: 1.5%; /* Ajusta la posición izquierda según sea necesario */
+    width: 24%; /* Ajusta el ancho según sea necesario */
+    object-fit: cover; /* Ajusta la imagen dentro de su contenedor */
+    box-shadow: 0 2px 26px rgba(0, 0, 0, .12); /* Opcional: añade sombra */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    border-radius: 30px;
+}
+
+.foto5 {
+    position: relative;
+    top: 30px; /* Ajusta la posición superior según sea necesario */
+    left: 1.5%; /* Ajusta la posición izquierda según sea necesario */
+    width: 24%; /* Ajusta el ancho según sea necesario */
+    object-fit: cover; /* Ajusta la imagen dentro de su contenedor */
+    box-shadow: 0 2px 26px rgba(0, 0, 0, .12); /* Opcional: añade sombra */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    border-radius: 30px;
+}
+
+.nota {
+    text-align: center;
+    font-family: 'Brush Script MT', Arial, Helvetica, sans-serif;
+    color:rgb(7, 7, 7);
+    font-size: 30px;
+    margin: 150px;
+}
+
+.florOro {
+    position: relative;
+    top: -160px; /* Ajusta la posición superior según sea necesario */
+    left: 38%; /* Ajusta la posición izquierda según sea necesario */
+    width: 25%; /* Ajusta el ancho según sea necesario */
+    object-fit: cover; /* Ajusta la imagen dentro de su contenedor */
+}
